@@ -1,8 +1,10 @@
+import React, { useState } from "react";
 import styled from "styled-components";
+import onSearch from "../App";
 
 const StyleInput = styled.input`
-   margin-right: 5px;
-   padding: 5px;
+   margin-right: 1px;
+   
    border-radius: 5px;
 `
 const Boton = styled.button`
@@ -10,17 +12,24 @@ const Boton = styled.button`
    color: green;
    border-radius: 5px;
    font-weight: bold;
-   font-size: 15px;
-   padding: 5px;
-   margin: 5px;
+   font-size: 13px;
+   padding: 1px;
+   margin: 2px;
    ;
 `
 
 export default function SearchBar(props) {
+   //console.log(props)
+   const [id, setId] = useState("")
+   
+   const InputChange = (event) => {
+     // const value = event.target;
+      setId(event.target.value)
+   }
    return (
-      <div style={{display: "flex", justifyContent: "flex-end"}}>
-         <StyleInput type='search'/>
-      <Boton onClick={() => props.onSearch()}>Agregar</Boton>
+      <div style={{display: "grid", justifyContent: "flex-end", padding: "5px", border: "solid" }}>
+         <StyleInput type='text' onChange={InputChange}/>
+      <Boton onClick={() =>props.onSearch(id)} >Agregar</Boton>
       </div>
    );
 }

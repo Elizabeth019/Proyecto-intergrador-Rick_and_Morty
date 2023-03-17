@@ -1,0 +1,20 @@
+.container {
+    display: grid;
+    background-color: rgb(146, 194, 248);
+    text-align: center;
+    
+}
+.linkHome{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    color:aliceblue;
+    padding: 10px;
+    margin: 0px 15px;
+}
+
+.linkAbout{
+    color: aliceblue;
+    border-radius: 10px;
+    padding: 10px;
+}

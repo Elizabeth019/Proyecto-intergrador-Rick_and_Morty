@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 const DivCar = styled.div`
    display: inline-block;
    border: outset;
@@ -7,18 +9,26 @@ const DivCar = styled.div`
    margin: 25px;
    background-color: beige;
    height: 5%;
-   box-shadow: 5px 10px 20px 1px rgba(255 , 255, 255, 0.2) !important;
-   transition: 2s,  2s, transform 2s
    `
+const Button = styled.button`
+  position: relative;
+  right: -100px;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+`
 
 export default function Card(props) {
+   console.log(props.onClose)
    return (
+   <Link to={`/detail/${props.id}`}>
+         <Button onClick={props.onClose}>X</Button>
       <DivCar>
-         <button onClick={() => props.onClose()}>X</button>
          <h2>{props.name}</h2>
          <h2>{props.species}</h2>
          <h2>{props.gender}</h2>
          <img  src={props.image} alt="imag not found" />
       </DivCar>
+   </Link>
    );
 }
