@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import onSearch from "../App";
+import onSearch from "../App"
+import handleLogOut from "../App"
 
 const StyleInput = styled.input`
    margin-right: 1px;
@@ -15,7 +16,6 @@ const Boton = styled.button`
    font-size: 13px;
    padding: 1px;
    margin: 2px;
-   ;
 `
 
 export default function SearchBar(props) {
@@ -26,10 +26,17 @@ export default function SearchBar(props) {
      // const value = event.target;
       setId(event.target.value)
    }
+
+   // const handleLogOut = (event) => {
+   //       //event.preventDefault()
+   //       props.logout()
+   // }
+
    return (
       <div style={{display: "grid", justifyContent: "flex-end", padding: "5px", border: "solid" }}>
          <StyleInput type='text' onChange={InputChange}/>
-      <Boton onClick={() =>props.onSearch(id)} >Agregar</Boton>
+         <Boton onClick={()=>props.onSearch(id)} >Agregar</Boton>
+         {/* <Boton type="submit" onClick={handleLogOut}>LogOut</Boton> */}
       </div>
    );
 }

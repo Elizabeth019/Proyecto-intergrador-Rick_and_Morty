@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
-import './App.css'
+import { useLocation, useNavigate} from 'react-router-dom'
 import { Routes, Route } from 'react-router-dom'
-import Cards from './components/Card/Cards.jsx'
+import './App.css'
+import Cards from './components/Cards/Cards.jsx'
 import Nav from './components/Nav/Nav.jsx'
 import About from './components/About/about.jsx'
 import Detail from './components/Detail/Detail.jsx'
-import Error from './components/Error/error.jsx'
+import Favorites from './components/Favorites/Favorites'
+//import Error from './components/Error/error.jsx'
 import Form from './components/Form/Form.jsx'
-import { useLocation } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+
 
 function App () {
   const [characters, setCharacters] = useState([]);
@@ -20,54 +21,60 @@ function App () {
   const password = "romeo2013";
 
   const login =(userData) =>{
-    console.log(userData)
+    //console.log(userData)
     if(userData.username === username && userData.password === password) { 
       console.log('si son')
       setAccess(true);
-       navigate('/home');
+      navigate('/home');
     }
   };
-   useEffect(() => {
-    !access && navigate('/');
-   }, [access, navigate]);
 
-   const logout =()=>{
+  // const handleLogOut = (props) => {
+  //   props.logout()
+  //  }
+
+  useEffect(() => {
+    !access && navigate('/');
+  }, [access, navigate]);
+
+  const logout =()=>{
     if(access === true) {
     setAccess(false)
     navigate('/')
-  }
-   }
+    }
+    }
 
   function onSearch(character) {
-    console.log(character)
-    fetch(`https://rickandmortyapi.com/api/character/${character}`)
-       .then((response) => response.json())
-       .then((data) => {
-        console.log(data)
+    //console.log(character)
+      fetch(`https://rickandmortyapi.com/api/character/${character}`)
+        .then((response) => response.json())
+        .then((data) => {
+        //console.log(data)
           if (data.name) {
-             setCharacters((oldChars) => [...oldChars, data]);
+              setCharacters((oldChars) => [...oldChars, data]);
           } else {
-             window.alert('No hay personajes con ese ID');
+              window.alert('No hay personajes con ese ID');
           } 
-       }, []);
- }
+        }, []);
+  }
   
   const onClose = (id) => {
-    //console.log(id)
-    const filtrado = characters.filter((char) => char.id !== Number(id))
+    //console.log(character)
+    const filtrado = characters.filter((char) => char.id !== id)
     setCharacters(filtrado)
   };
   
   return (
     <div className='App' style={{ padding: '25px'}}>
-     { location.pathname !== "/" &&
-       <Nav onSearch={onSearch} logout={logout}/>}
+      { location.pathname !== "/" &&
+        <Nav onSearch={onSearch} logout={logout}/>}
       <Routes>
-        <Route path="/" element={<Form login={login} logout={logout}/>}/>
+        <Route path="/" element={<Form login={login} />}/>
         <Route path="/home" element={<Cards characters={characters} onClose={onClose}/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/detail/:detailId" element={<Detail/>}/>
-        <Route path="*" element={<Error/>} />
+        <Route path="/favorites" element={<Favorites/>}/>
+        {/* <Route path="*" element={<Error/>} /> */}
       </Routes>
     </div>
   )
