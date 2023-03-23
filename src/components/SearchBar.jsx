@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import onSearch from "../App"
-import handleLogOut from "../App"
 
 const StyleInput = styled.input`
    margin-right: 1px;
@@ -26,7 +24,11 @@ export default function SearchBar(props) {
      // const value = event.target;
       setId(event.target.value)
    }
-
+   
+   const handleRandom = ()=>{
+      props.onSearch(Math.floor(Math.random() * 826) + 1);
+      setId("");
+   }
    // const handleLogOut = (event) => {
    //       //event.preventDefault()
    //       props.logout()
@@ -35,8 +37,9 @@ export default function SearchBar(props) {
    return (
       <div style={{display: "grid", justifyContent: "flex-end", padding: "5px", border: "solid" }}>
          <StyleInput type='text' onChange={InputChange}/>
-         <Boton onClick={()=>props.onSearch(id)} >Agregar</Boton>
+         <Boton onClick={()=> props.onSearch(id)} >Agregar</Boton>
          {/* <Boton type="submit" onClick={handleLogOut}>LogOut</Boton> */}
+         <Boton onClick={() => handleRandom (id)}>Random</Boton>
       </div>
    );
 }

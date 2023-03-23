@@ -10,7 +10,7 @@ border-radius:'20px';
 
 export default function Cards(props) {
    const { characters }  = props;
-   console.log(props.onClose)
+   console.log(characters)
    return (
       <StyleCards>
          {characters.map(character => (

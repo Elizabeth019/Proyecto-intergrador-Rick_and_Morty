@@ -29,10 +29,6 @@ function App () {
     }
   };
 
-  // const handleLogOut = (props) => {
-  //   props.logout()
-  //  }
-
   useEffect(() => {
     !access && navigate('/');
   }, [access, navigate]);
@@ -42,7 +38,7 @@ function App () {
     setAccess(false)
     navigate('/')
     }
-    }
+  }
 
   function onSearch(character) {
     //console.log(character)
@@ -51,7 +47,8 @@ function App () {
         .then((data) => {
         //console.log(data)
           if (data.name) {
-              setCharacters((oldChars) => [...oldChars, data]);
+            characters.find((chart) => chart.id === data.id) === undefined ?
+              setCharacters((oldChars) => [...oldChars, data]) : alert("No se puede mostrar personajes repetidos");
           } else {
               window.alert('No hay personajes con ese ID');
           } 

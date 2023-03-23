@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { favoritos, remove } from "../../redux/actions"
+import { favoritos, remove } from "../../redux/action"
 import { useState, useEffect } from "react";
 
 const DivCar = styled.div`
