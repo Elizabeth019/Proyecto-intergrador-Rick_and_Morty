@@ -1,4 +1,12 @@
 .container{
-    float: left;
+    display: gr;
+    border: solid;
     color: azure;
+    
+}
+.boton{
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #d7ee82;
+    color: green;
 }

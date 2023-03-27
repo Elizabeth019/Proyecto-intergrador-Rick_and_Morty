@@ -25,7 +25,6 @@ export default function Detail(props){
     
     return (
       <div> 
-            <button onClick={()=>navigate(-1)}>Regresar</button>
         <div className={style.container}>
             <h1>Name: {character.name}</h1>
             <h1>Status: {character.status}</h1>
@@ -33,8 +32,9 @@ export default function Detail(props){
             <h1>Gender: {character.gender}</h1>
             <h1>Origin: {character.origin?.name}</h1>
             <h1>location: {character.location?.name}</h1>
+            <button className={style.boton} onClick={()=>navigate(-1)}>Regresar</button>
+            <img src={character.image} alt=""/>
         </div>
-        <img src={character.image} alt=""/>
       </div>
     )
 }

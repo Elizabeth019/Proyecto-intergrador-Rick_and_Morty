@@ -12,8 +12,9 @@ const Boton = styled.button`
    border-radius: 5px;
    font-weight: bold;
    font-size: 13px;
-   padding: 1px;
+   padding: 8px;
    margin: 2px;
+   right: 0%;
    `
    export default function Nav (props){
     //console.log(props)
@@ -24,6 +25,7 @@ const Boton = styled.button`
       
       return (
          <div>
+            <Boton type="submit" onClick={handleLogOut}>Logout</Boton>
             <Link to="/" element={<SearchBar/>}/> 
             <Link to="/home" className={styles.linkAbout}>Home</Link>
             <Link to="/about" element={<About/>} className={styles.linkAbout}>About</Link>
@@ -32,7 +34,6 @@ const Boton = styled.button`
       <SearchBar
          onSearch={(characterID)=>props.onSearch(characterID)}
       />
-         <Boton type="submit" onClick={handleLogOut}>LogOut</Boton>
       </div>
    )
 }

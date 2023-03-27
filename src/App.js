@@ -7,7 +7,7 @@ import Nav from './components/Nav/Nav.jsx'
 import About from './components/About/about.jsx'
 import Detail from './components/Detail/Detail.jsx'
 import Favorites from './components/Favorites/Favorites'
-//import Error from './components/Error/error.jsx'
+import Error404 from './components/Error404/error404.jsx'
 import Form from './components/Form/Form.jsx'
 
 
@@ -71,7 +71,7 @@ function App () {
         <Route path="/about" element={<About/>}/>
         <Route path="/detail/:detailId" element={<Detail/>}/>
         <Route path="/favorites" element={<Favorites/>}/>
-        {/* <Route path="*" element={<Error/>} /> */}
+        <Route path="*" element={<Error404/>} />
       </Routes>
     </div>
   )

@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const StyleInput = styled.input`
    margin-right: 1px;
-   
    border-radius: 5px;
 `
 const Boton = styled.button`
@@ -29,17 +28,16 @@ export default function SearchBar(props) {
       props.onSearch(Math.floor(Math.random() * 826) + 1);
       setId("");
    }
-   // const handleLogOut = (event) => {
-   //       //event.preventDefault()
-   //       props.logout()
-   // }
 
    return (
-      <div style={{display: "grid", justifyContent: "flex-end", padding: "5px", border: "solid" }}>
+
+      <div style={{ padding: "5px", border: "solid white" }}>
+         <img src="https://www.pngplay.com/wp-content/uploads/14/Rick-And-Morty-Logo-Transparent-File.png" alt="Rick" width="450px" justifyContent="flex-start"/> 
+         <div style={{display: "grid", justifyContent: "flex-end"}}>
          <StyleInput type='text' onChange={InputChange}/>
          <Boton onClick={()=> props.onSearch(id)} >Agregar</Boton>
-         {/* <Boton type="submit" onClick={handleLogOut}>LogOut</Boton> */}
          <Boton onClick={() => handleRandom (id)}>Random</Boton>
+         </div>
       </div>
    );
 }

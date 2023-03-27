@@ -34,7 +34,9 @@ export default function Form (props){
     
     
     return (
+
         <form className={styles.container} onSubmit={handleSubmit}>
+        <img src="https://i.pinimg.com/originals/d9/f2/1d/d9f21da38ae59658eb2715221d3e35ea.jpg" alt="Rick&Morty" width="250px" />
             <label>UserName </label>
             <input type="text"
                 value={userData.username} 
@@ -51,7 +53,7 @@ export default function Form (props){
                 className={errors.password && styles.warning}/>
                 {errors.password ? <p>{errors.password}</p> : null}
 
-            <button type="submit">Login</button>
+            <button className={styles.boton} type="submit">Login</button>
             
         </form>
     )

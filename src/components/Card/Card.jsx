@@ -10,9 +10,18 @@ const DivCar = styled.div`
    border-radius: 30px ;
    overflow: hidden;
    margin: 25px;
-   background-color: beige;
+   background-color: rgba(169, 219, 226, 0.8);
    height: 5%;
+   /* background-color: white; */
+   &:hover {
+      background-color: beige;
+      transform: translateY(-15px);
+      -moz-box-shadow: 13px 13px 11px -1px rgba(232,225,232,0.84);
+      box-shadow: 13px 13px 11px -1px rgba(232,225,232,0.84);
+   }
+
    `
+
 const Button = styled.button`
    position: relative;
    right: -110px;
@@ -57,12 +66,13 @@ function Card(props) {
       {
          isFav ? (
             <BotonFav onClick={handleFavorite}>❤️</BotonFav>
-         ) : (
-            <BotonFav onClick={handleFavorite}>🤍</BotonFav>
-         )
-      }
+            ) : (
+               <BotonFav onClick={handleFavorite}>🤍</BotonFav>
+               )
+            }
       <Button onClick={props.onClose}>X</Button>
-            <Link to={`/detail/${props.id}`}>
+         <h2>{props.id}</h2>
+         <Link to={`/detail/${props.id}`}>
          <h2>{props.name}</h2>
          <h2>{props.species}</h2>
          <h2>{props.gender}</h2>
